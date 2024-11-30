@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand Management</title>
+    <link rel="stylesheet"href="/style.css">
+</head>
+<body>
+    <h1>Brand management</h1>
+
+    <!--add new brandform-->
+    <form action="/add"methods="POST">
+        <input type="text"name="name"placeholder="brand name"required>
+        <input type="text"name="description"placeholder="brand description"required>
+        <button type="submit">Add Brand</button>
+    </form>
+    <ul>
+        <% brands.forEach(brand => { %>
+            <li>
+                <strong><%= brand.name %></strong>: <%= brand.description %>
+                <a href="/edit/<%= brand._id %>">Edit</a>
+                <form action="/delete/<%= brand._id %>" method="POST" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        <% }); %>
+        </ul>
+    
+</body>
+</html>
